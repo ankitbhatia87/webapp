@@ -1,0 +1,109 @@
+@mixin base-milestone {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #444;
+    border: 2px solid #fff;
+    position: relative;
+    content: '';
+}
+
+@mixin milestone-popup($valueType) {
+    display: table;
+    @if $valueType == odd {
+        top: 120px;
+    } @else {
+        top: -130px;
+    }
+    
+}
+
+@mixin milestones($valueType) {
+    @if $valueType == odd {
+        top: -20px;
+        a {
+            z-index: 2;
+            padding-bottom: 20px;
+            &:after {
+                @include base-milestone();
+                top: 15px;
+            }
+        }
+        
+        &:before {
+            content: '';
+            width: 150%;
+            position: absolute;
+            left: 50%;
+            top: 64%;
+            border: $color-dark-gray dashed 1px;
+            z-index: 1;
+        }
+    } @else {
+        top: 20px;
+        a {
+            z-index: 1;
+            padding-top: 20px;
+            &:before {
+                @include base-milestone();
+                bottom: 15px;
+            }
+        }
+        
+        &:after {
+            content: '';
+            width: 150%;
+            position: absolute;
+            left: 50%;
+            bottom: 64%;
+            border: $color-dark-gray dashed 1px;
+            z-index: 1;
+        }
+    }
+}
+
+@mixin set-border-bg($bgGradient1: #b6b9b8, $bgGradient2: #e7e9e7) {
+    background: linear-gradient(180deg, $bgGradient1, $bgGradient2);
+}
+
+@mixin milestones-hover-state($bgColor, $bgGradient1, $bgGradient2) {
+    &:hover{
+        background: $bgColor;
+        a {
+            background: linear-gradient(180deg, $bgGradient1, $bgGradient2);
+        }
+    }
+}
+
+@mixin form-fields {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    color: $color-heading-gray;
+    border: none;
+}
+
+@mixin milestone-arrows {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: get-px-to-rem(60px);
+    color: $color-lightest-gray1;
+    transition: .2s color;
+    &:hover {
+        color: $color-medium-gray;
+    }
+}
+
+@mixin testimonial-arrows {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: get-px-to-rem(60px);
+    color: $color-white;
+    opacity: .8;
+    transition: .2s opacity;
+    &:hover {
+        opacity: 1;
+    }
+}
