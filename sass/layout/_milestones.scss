@@ -1,0 +1,149 @@
+.milestones {
+    margin-bottom: 60px;
+    .heading {
+        color: $color-heading-gray;
+    }
+    .timeline {
+        position: relative;
+        width: 100%;
+        max-width: 1440px;
+        ul {
+            display: flex;
+            li {
+                .year {
+                    font-family: $font-agencyfb-regular;
+                    letter-spacing: 2px;
+                    padding-bottom: 10px;
+                    font-size: get-px-to-rem(30px);
+                }
+                h3 {
+                    padding: 10px 0;
+                    color: $color-base;
+                }
+                p {
+                    line-height: 24px;
+                }
+                width: 100%;
+                text-align: center;
+                display: none;
+                left: 100%;
+                position: relative;
+                &.active {
+                    display: block;
+                    left: 0;
+                    transition: all 1s;
+                }
+                transition: all 1s;
+            }
+        }
+        .left-arrow {
+            left: 15px;
+            @include milestone-arrows;
+        }
+        .right-arrow {
+            right: 15px;
+            @include milestone-arrows;
+        }
+    }
+}
+
+/* .milestones{
+    .heading {
+        color: $color-heading-gray;
+    }
+    ul {
+        margin: 60px 0 100px 0;
+        li {
+            position: relative;
+            font-family: $font-agencyfb-regular;
+            height: 134px;
+            width: 134px;
+            background: $color-lightest-gray;
+            border-radius: 50%;
+            padding: 15px;
+            &:nth-child(odd) {
+                @include milestones(odd);
+            }
+            &:nth-child(even) {
+                @include milestones(even);
+            }
+            &:last-child {
+                &:before {
+                    content: '';
+                    border: none;
+                }
+            }
+            a {
+                @include set-border-bg(#b6b9b8, #e7e9e7);
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                border-radius: 50%;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+                font-size: get-px-to-rem(30px);
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+            &.green {
+                @include milestones-hover-state(#dbffe6, #09ba69, #6ce07d);
+            }
+            &.cyan {
+                @include milestones-hover-state(#ccfeff, #1492bc, #6adadb);
+            }
+            &.violet {
+                @include milestones-hover-state(#f8e5ff, #8513b0, #b39ee3);
+            }
+            &.magenta {
+                @include milestones-hover-state(#ffecf5, #e20070, #ff63fa);
+            }
+            &.orange {
+                @include milestones-hover-state(#ffe8e2, #d85e13, #fe9e9e);
+            }
+            &.yellow {
+                @include milestones-hover-state(#fffae0, #d1b90f, #ea9f68);
+            }
+            &.chartreuse {
+                @include milestones-hover-state(#f4fedc, #95cd16, #e7d46b);
+            }
+            .milestone-popup {
+                display: none;
+                text-align: center;
+                background: $color-white;
+                padding: 20px 40px;
+                left: -50%;
+                top: 0;
+                position: absolute;
+                transform: translateX(11%);
+                box-shadow: 3px 3px 9px $color-black-opacity-13;
+                border-radius: 10px;
+                p, h3 {
+                    white-space: nowrap;
+                }
+            }
+            &:nth-child(odd) {
+                &:hover {
+                    .milestone-popup {
+                        @include milestone-popup(odd);
+                    }                
+                }
+            }
+            &:nth-child(even) {
+                &:hover {
+                    .milestone-popup {
+                        @include milestone-popup(even);
+                    }                
+                }
+            }
+            
+        }
+    }
+    .timeline {
+        &:after {
+            content: '';
+            border-top: #000 dotted 1px;
+        }
+    }
+} */

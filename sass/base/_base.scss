@@ -1,0 +1,75 @@
+html {
+    scroll-behavior: smooth;
+    body {
+        background: $color-white;
+        font-family: $font-base!important;
+        font-size: get-px-to-rem(16px);
+        .container {
+            width: 100%;
+            max-width: 100%!important;
+            padding-top: get-px-to-rem(56px);
+        }
+        h1 {
+            font-size: get-px-to-rem(56px);
+            font-family: $font-avenir-medium-bold;
+            letter-spacing: -2px;
+        }
+    
+        h2 {
+            font-size: get-px-to-rem(45px);
+            letter-spacing: -4px;
+        }
+    
+        h3 {
+            font-size: get-px-to-rem(28px);
+            @include media-breakpoint-up(sm) {
+                font-size: get-px-to-rem(36px);
+            }
+            &.heading {
+                padding-bottom: 56px;
+            }
+        }
+        h4 {
+            font-size: get-px-to-rem(30px);
+        }
+        .bg-shadow {
+            background: rgba(0,0,0,.6);
+        }
+        .btn-primary {
+            background: $color-base;
+            border: none;
+            border-radius: 0;
+            width: 100%;
+            padding-top: get-px-to-rem(12px);
+            padding-bottom: get-px-to-rem(12px);
+            font-size: get-px-to-rem(24px);
+            &:hover {
+                background: $color-base-medium;
+            }
+        }
+        .w-10 {
+            width: 10%;
+        }
+        .w-20 {
+            width: 20%;
+        }
+        .w-30 {
+            width: 30%;
+        }
+        .w-40 {
+            width: 40%;
+        }
+        .w-60 {
+            width: 60%;
+        }
+        .w-70 {
+            width: 70%;
+        }
+        .w-80 {
+            width: 80%;
+        }
+        .w-90 {
+            width: 90%;
+        }
+    }
+}
