@@ -1,9 +1,0 @@
-@function get-px-to-rem($size: 16px) {
-    $remsize: $size / 16px;
-    @return #{$remsize}rem;
-}
-
-@function get-px-to-vw($width: 1920) {
-    $vwWidth: ($width / 1920) * 100;
-    @return #{$vwWidth}vw;
-}
