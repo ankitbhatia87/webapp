@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl lg:text-7xl pb-6;
+  }
+  h2 {
+    @apply text-2xl lg:text-4xl font-bold pb-5;
+  }
+  h3 {
+    @apply text-xl lg:text-3xl font-bold pb-4;
+  }
+  h4 {
+    @apply text-xl;
+  }
+  h5 {
+    @apply text-lg;
+  }
+}
