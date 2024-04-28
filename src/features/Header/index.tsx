@@ -2,11 +2,10 @@ import { FC, ReactElement } from "react";
 // import Navigation from "../Navigation";
 import ABWButton from "../../ui.kit/Button";
 import { ButtonType } from "../../ui.kit/Button/enum";
-import Resume from "../../assets/pdf/resume.pdf";
 
 const Header: FC = (): ReactElement => {
   const handleCVDownloadBtnClick = () => {
-    window.open(Resume, "_blank");
+    window.open("../../assets/resume.pdf", "_blank");
   };
 
   return (
