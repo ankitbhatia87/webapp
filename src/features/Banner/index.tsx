@@ -1,8 +1,8 @@
 import { FC, ReactElement } from "react";
 import DynamicTextComp from "./components/DynamicText";
 import ABWButton from "../../ui.kit/Button";
-import { ButtonType } from "../../ui.kit/Button/enum";
 import GreetingText from "./components/GreetingText";
+import { ButtonType } from "../../ui.kit/Button/enum";
 
 const Banner: FC = (): ReactElement => (
   <div id="banner" className="min-h-96 pt-16 relative">
