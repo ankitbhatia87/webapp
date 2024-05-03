@@ -44,11 +44,11 @@ const Home: FC = (): ReactElement => {
   return (
     <>
       <Banner />
-      <div className="p-6 rounded-xl">
+      <div className="p-6 rounded-xl grid gap-6 md:grid-cols-2 xl:grid-cols-4">
         {cardsData.map(
           (card): ReactNode => (
-            <Card className="mb-8 p-6 flex flex-col last:mb-0">
-              <div className="self-start flex">{card.icon}</div>
+            <Card className="p-6">
+              <div className="self-start">{card.icon}</div>
               <h3>{card.heading}</h3>
               <p>{card.text}</p>
             </Card>

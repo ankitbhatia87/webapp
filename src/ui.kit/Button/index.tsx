@@ -20,7 +20,7 @@ const ABWButton: FC<ButtonTypeProp> = (props: ButtonTypeProp): ReactElement => {
       )}
       {type === ButtonType.Secondary && (
         <Button
-          className={`rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-solid font-medium border-orange-400 focus:border-orange-400 text-orange-400 bg-transparent ${className}`}
+          className={`rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border border-solid font-medium border-orange-400 focus:border-orange-400 text-orange-400 bg-transparent ${className}`}
           {...rest}
         >
           <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-orange-400 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>

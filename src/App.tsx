@@ -4,7 +4,7 @@ import Header from "./features/Header";
 
 function App() {
   return (
-    <div className="w-full">
+    <div className="w-full grid">
       <Header />
       <Body />
       <Footer />
