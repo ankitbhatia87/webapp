@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useMemo, useState } from "react";
+import { ReactElement, useMemo, useState } from "react";
 
 const useTypingText = (words: string[], speed: number): ReactElement => {
   const [wordToPrint, setWordToPrint] = useState<string>("");
@@ -35,8 +35,6 @@ const useTypingText = (words: string[], speed: number): ReactElement => {
       }
     }, speed);
   };
-
-  useEffect(() => console.log(wordToPrint), [wordToPrint]);
 
   useMemo(() => {
     getTextToPrint();

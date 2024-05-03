@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    @apply text-slate-800;
+  }
   h1 {
     @apply text-4xl lg:text-7xl pb-6;
   }
