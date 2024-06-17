@@ -8,6 +8,9 @@ export default {
       },
       animation: {
         blink: "blink 1s ease-in-out infinite"
+      },
+      colors: {
+        "custom-orange": "#FF9900"
       }
     }
   },

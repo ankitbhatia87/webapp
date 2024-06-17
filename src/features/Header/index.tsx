@@ -3,6 +3,8 @@ import { FC, ReactElement } from "react";
 import ABWButton from "../../ui.kit/Button";
 import { ButtonType } from "../../ui.kit/Button/enum";
 import Resume from "../../assets/pdf/resume.pdf";
+import { GitHubLogo } from "../../assets/images/icons";
+import ABWLink from "../../ui.kit/Link";
 
 const Header: FC = (): ReactElement => {
   const handleCVDownloadBtnClick = () => {
@@ -12,10 +14,17 @@ const Header: FC = (): ReactElement => {
   return (
     <div
       id="header"
-      className="relative z-10 max-w-screen-2xl justify-self-center w-full"
+      className="relative z-10 max-w-screen-2xl justify-self-center w-full xl:max-w-screen-xl"
     >
       <div className="absolute w-full">
-        <div className="flex justify-center p-4 md:justify-end">
+        <div className="flex justify-center p-4 md:justify-end gap-4 items-center">
+          <ABWLink
+            to=""
+            href="https://github.com/ankitbhatia87/webapp"
+            target="_blank"
+          >
+            <GitHubLogo />
+          </ABWLink>
           <ABWButton
             type={ButtonType.Secondary}
             className=""
