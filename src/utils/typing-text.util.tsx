@@ -43,7 +43,7 @@ const useTypingText = (words: string[], speed: number): ReactElement => {
   return (
     <>
       {words.length > 0 && wordToPrint}
-      <span className="animate-blink">_</span>
+      <span className="animate-blink text-orange-400">_</span>
     </>
   );
 };

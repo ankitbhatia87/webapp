@@ -9,6 +9,7 @@ import {
   teamworkLottieOptions,
   technologyLottieOptions
 } from "../../assets/lotties";
+import Timeline from "../../utils/timeline";
 
 const Home: FC = (): ReactElement => {
   const cardsData: CardCommonData[] = [
@@ -41,19 +42,60 @@ const Home: FC = (): ReactElement => {
       text: "With a meticulous attention to detail, I ensure that every aspect of the development process is executed to the highest standards. Leveraging best practices and sophisticated tools, I continuously strive to enhance performance to ensure an optimal user experience across platforms and devices."
     }
   ];
+
+  const timelineData = [
+    {
+      year: 1987,
+      description: "I came to this planet",
+      tags: ["20th March", "Delhi", "India"]
+    },
+    {
+      year: 1992,
+      description: "My formal education started",
+      tags: ["schooling", "1st standard"]
+    },
+    {
+      year: 2002,
+      description: "I completed Secondary School",
+      tags: ["70%"]
+    },
+    {
+      year: 2004,
+      description: "I completed High School",
+      tags: ["74%"]
+    },
+    {
+      year: 2008,
+      description: "I completed Bachelor of Science & started my first job",
+      tags: ["72.5%", "Web Designer"]
+    },
+    {
+      year: 2018,
+      description: "I got married",
+      tags: ["A new chapter", "Bangalore"]
+    }
+  ];
   return (
     <>
       <Banner />
-      <div className="p-6 rounded-xl grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <div className="p-6 grid gap-6 md:grid-cols-2 xl:grid-cols-4 bg-slate-200 transition-all">
         {cardsData.map(
           (card): ReactNode => (
             <Card className="p-6">
-              <div className="self-start">{card.icon}</div>
+              <div className="flex justify-start">
+                <div>{card.icon}</div>
+              </div>
               <h3>{card.heading}</h3>
               <p>{card.text}</p>
             </Card>
           )
         )}
+      </div>
+      <div className="flex justify-center relative hidden">
+        <Timeline data={timelineData} />
+        <p className="absolute -bottom-[96px] text-[192px] right-0 z-10 text-slate-200">
+          ankit
+        </p>
       </div>
     </>
   );
