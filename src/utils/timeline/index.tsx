@@ -11,13 +11,18 @@ const Timeline: FC<TimelineProps> = (props): ReactElement => {
         <div className={styles.timeline}>
           {data.map((record: TimelineRecord) => (
             <div className={styles.milestone}>
-              <h3>{record.year}</h3>
-              <p>{record.description}</p>
-              <ul className={styles.tags}>
-                {record.tags.map((tag) => (
-                  <li>{tag}</li>
-                ))}
-              </ul>
+              <div>
+                <h3>{record.year}</h3>
+              </div>
+              <div className={styles.content}>
+                <h4>{record.year}</h4>
+                <p>{record.description}</p>
+                <ul className={styles.tags}>
+                  {record.tags.map((tag) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>

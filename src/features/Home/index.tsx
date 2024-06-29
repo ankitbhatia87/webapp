@@ -46,33 +46,105 @@ const Home: FC = (): ReactElement => {
   const timelineData = [
     {
       year: 1987,
-      description: "I came to this planet",
+      description: "One fine afternoon, I came to this planet",
       tags: ["20th March", "Delhi", "India"]
     },
     {
       year: 1992,
-      description: "My formal education started",
-      tags: ["schooling", "1st standard"]
+      description:
+        "I started going to school a year before, because I learnt more than others",
+      tags: ["schooling", "1st standard", "ahead of time"]
+    },
+    {
+      year: 1993,
+      description:
+        "My father survived a massive heart attack that shook my life to the core",
+      tags: ["devastated", "lost", "scattered"]
+    },
+    {
+      year: 2001,
+      description: "Received an award for being the best student in 9th class",
+      tags: ["motivated", "disciplined", "obedient"]
     },
     {
       year: 2002,
-      description: "I completed Secondary School",
-      tags: ["70%"]
+      description: "I completed my Secondary School journey",
+      tags: ["70%", "C.B.S.E."]
+    },
+    {
+      year: 2003,
+      description:
+        "I was part of volley ball & cricket teams, and was in the forefront of school marching batallion",
+      tags: [
+        "Won Zonal Cricket Championship",
+        "2nd position in marching batallion"
+      ]
     },
     {
       year: 2004,
-      description: "I completed High School",
-      tags: ["74%"]
+      description:
+        "I completed my High School journey with a dream of becoming an actor",
+      tags: ["74%", "C.B.S.E.", "acting"]
     },
     {
       year: 2008,
       description: "I completed Bachelor of Science & started my first job",
-      tags: ["72.5%", "Web Designer"]
+      tags: ["72.5%", "Web Designer", "Vinove Software & Services"]
+    },
+    {
+      year: 2009,
+      description:
+        "Upskilled myself with jQuery, Javascript and landed in another job",
+      tags: ["Treystaa", "jQuery", "Photoshop", "Flash", "BI Product"]
+    },
+    {
+      year: 2011,
+      description:
+        "Faced the never imagined health problem and nosedived in my career and life but started my spiritual journey",
+      tags: [
+        "3 months sabbatical",
+        "damaged",
+        "broken",
+        "meditation",
+        "healing"
+      ]
+    },
+    {
+      year: 2014,
+      description:
+        "Recovered miraculously and started a new chapter with Sapient",
+      tags: ["backboneJS", "ReactJS & Angular", "AEM", "Gymming", "Fitness"]
     },
     {
       year: 2018,
-      description: "I got married",
-      tags: ["A new chapter", "Bangalore"]
+      description: "With the bond of marriage, I grew further and stronger",
+      tags: ["Wedding", "Euro Trip", "Bangalore"]
+    },
+    {
+      year: 2019,
+      description: "Joined TEKSystems and later Epsilon after 6months",
+      tags: ["Early Switch", "TEKSystems", "Epsilon", "Tech Lead"]
+    },
+    {
+      year: 2021,
+      description:
+        "Joined Novo to switch from Service to Product. Also started living my passion of photography",
+      tags: ["Product", "FinTech", "Back to Developer", "Photography"]
+    },
+    {
+      year: 2022,
+      description: "An angel came in my life in the form of my daughter",
+      tags: ["Blessed", "Fatherhood", "Lucky Charm"]
+    },
+    {
+      year: 2024,
+      description:
+        "Commenced building my brand starting by developing my website",
+      tags: [
+        "You are here...",
+        "I am here...",
+        "Lets connect to build something crazy"
+      ]
     }
   ];
   return (
@@ -91,9 +163,9 @@ const Home: FC = (): ReactElement => {
           )
         )}
       </div>
-      <div className="flex justify-center relative hidden">
+      <div className="flex justify-center relative">
         <Timeline data={timelineData} />
-        <p className="absolute -bottom-[96px] text-[192px] right-0 z-10 text-slate-200">
+        <p className="absolute -bottom-[96px] text-[192px] right-0 z-10 text-slate-200 hidden sm:block">
           ankit
         </p>
       </div>
