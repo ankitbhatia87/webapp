@@ -1,0 +1,107 @@
+.timeline {
+  position: relative;
+  width: 700px;
+  margin: 36px 0;
+  z-index: 30;
+}
+
+.timeline:before {
+  content: "";
+  width: 4px;
+  height: 100%;
+  display: block;
+  background: #e5e7eb;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.milestone {
+  position: relative;
+  width: calc(50% - 50px);
+  text-align: right;
+  opacity: 0.7;
+  transition: all 0.2s;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 10px;
+  clear: both;
+  background-color: #fff;
+}
+
+.milestone:hover {
+  position: relative;
+  opacity: 1;
+  box-shadow: #eee 2px 5px 3px;
+}
+
+.milestone h3 {
+  position: relative;
+  font-size: 20px;
+  padding-bottom: 0;
+}
+.milestone h3::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: #e5e7eb 4px solid;
+  border-radius: 100%;
+  position: absolute;
+  top: -12px;
+  right: -78px;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+.milestone h3::after {
+  content: "";
+  width: 0;
+  height: 0;
+}
+
+.milestone:hover h3::before {
+  width: 20px;
+  height: 20px;
+  right: -80px;
+  border-color: #f97316;
+}
+
+.milestone:nth-child(2n) {
+  clear: both;
+  float: right;
+  text-align: left;
+}
+
+.milestone:nth-child(2n) h3:before {
+  left: -78px;
+}
+
+.milestone:nth-child(2n):hover h3::before {
+  left: -80px;
+}
+
+.milestone .tags {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  justify-content: flex-end;
+}
+
+.milestone:nth-child(2n) .tags {
+  justify-content: flex-start;
+}
+
+.milestone .tags li {
+  border: 1px dashed #666;
+  border-radius: 0.8rem;
+  padding: 4px 8px;
+  white-space: no-wrap;
+  color: #666;
+}
+
+.milestone:hover .tags li {
+  border: 1px solid #f97316;
+  color: #f97316;
+}
