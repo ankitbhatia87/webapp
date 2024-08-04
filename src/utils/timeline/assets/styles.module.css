@@ -35,6 +35,8 @@
   padding: 10px;
   border: 1px solid #94a3b8;
   border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 0 6px rgba(208, 208, 208, 1);
 }
 
 .milestone:hover .content {
