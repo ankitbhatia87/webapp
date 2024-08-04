@@ -170,13 +170,13 @@ const Home: FC = (): ReactElement => {
           ankit
         </p>
       </div>
-      <div className="flex z-50 relative bg-black my-4">
-        <ScrollingText className="inline-block uppercase py-4 whitespace-nowrap bg-black text-white h-full text-6xl font-poppinsMedium animate-marquee_ltr">
+      <div className="flex z-50 relative bg-white pt-2 md:pt-4">
+        <ScrollingText className="inline-block uppercase pt-4 pb-1 md:pb-2 whitespace-nowrap tracking-wide h-full text-4xl md:text-6xl font-poppinsMedium animate-marquee_ltr text-white drop-shadow-border">
           Experienced Frontend Engineer Available For Hire *&nbsp;
         </ScrollingText>
       </div>
-      <div className="flex z-50 relative bg-white py-4">
-        <ScrollingText className="inline-block uppercase py-4 whitespace-nowrap h-full text-4xl font-poppinsMedium animate-marquee_rtl">
+      <div className="flex z-50 relative bg-white pb-2 md:pb-4">
+        <ScrollingText className="inline-block uppercase pb-4 pt-1  md:pt-2 whitespace-nowrap h-full text-2xl md:text-4xl font-poppinsMedium animate-marquee_rtl text-black">
           HTML & CSS * Javascript * MERN Stack * Tech Leadership * Consultant *
           Web Development *&nbsp;
         </ScrollingText>
