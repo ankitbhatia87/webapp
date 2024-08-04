@@ -26,6 +26,9 @@ export default {
         poppinsExtrabold: ['"poppinsExtrabold"', "sans serif"],
         poppinsBold: ['"poppinsBold"', "sans serif"],
         poppinsMedium: ['"poppinsMedium"', "sans serif"]
+      },
+      dropShadow: {
+        border: "0 0 2px rgba(0, 0, 0, .6)"
       }
     }
   },
