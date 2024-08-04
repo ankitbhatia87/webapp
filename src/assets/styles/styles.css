@@ -728,6 +728,10 @@ h5 {
   width: 100%;
 }
 
+.w-\[100vw\] {
+  width: 100vw;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -1118,6 +1122,10 @@ h5 {
 
   .md\:w-1\/2 {
     width: 50%;
+  }
+
+  .md\:w-96 {
+    width: 24rem;
   }
 
   .md\:grid-cols-2 {
