@@ -502,6 +502,24 @@ h5 {
   line-height: 1.75rem;
 }
 
+@font-face {
+  font-family: "poppinsExtrabold";
+
+  src: url("../fonts/Poppins-ExtraBold.ttf");
+}
+
+@font-face {
+  font-family: "poppinsBold";
+
+  src: url("../fonts/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: "poppinsMedium";
+
+  src: url("../fonts/Poppins-Medium.ttf");
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -646,8 +664,21 @@ h5 {
   z-index: 20;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 .m-1 {
   margin: 0.25rem;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .ml-3 {
@@ -656,6 +687,10 @@ h5 {
 
 .block {
   display: block;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .flex {
@@ -686,12 +721,20 @@ h5 {
   width: 16rem;
 }
 
+.w-96 {
+  width: 24rem;
+}
+
 .w-auto {
   width: auto;
 }
 
 .w-full {
   width: 100%;
+}
+
+.min-w-full {
+  min-width: 100%;
 }
 
 .max-w-screen-2xl {
@@ -724,6 +767,34 @@ h5 {
 
 .animate-blink {
   animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes marquee_ltr {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee_ltr {
+  animation: marquee_ltr 10s linear infinite;
+}
+
+@keyframes marquee_rtl {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee_rtl {
+  animation: marquee_rtl 10s linear infinite;
 }
 
 .cursor-pointer {
@@ -768,6 +839,10 @@ h5 {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 
 .rounded-md {
@@ -893,6 +968,10 @@ h5 {
   text-align: center;
 }
 
+.font-poppinsMedium {
+  font-family: "poppinsMedium", sans serif;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -903,6 +982,11 @@ h5 {
   line-height: 2.5rem;
 }
 
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
 .text-\[192px\] {
   font-size: 192px;
 }
@@ -910,6 +994,11 @@ h5 {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
 }
 
 .font-medium {
@@ -1009,17 +1098,9 @@ h5 {
   .sm\:block {
     display: block;
   }
-
-  .sm\:hidden {
-    display: none;
-  }
 }
 
 @media (min-width: 768px) {
-  .md\:block {
-    display: block;
-  }
-
   .md\:flex {
     display: flex;
   }

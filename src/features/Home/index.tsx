@@ -10,6 +10,7 @@ import {
   technologyLottieOptions
 } from "../../assets/lotties";
 import Timeline from "../../utils/timeline";
+import ScrollingText from "../ScrollingText";
 
 const Home: FC = (): ReactElement => {
   const cardsData: CardCommonData[] = [
@@ -168,6 +169,17 @@ const Home: FC = (): ReactElement => {
         <p className="absolute -bottom-[96px] text-[192px] right-0 z-10 text-slate-200 hidden sm:block">
           ankit
         </p>
+      </div>
+      <div className="flex z-50 relative bg-black my-4">
+        <ScrollingText className="inline-block uppercase py-4 whitespace-nowrap bg-black text-white h-full text-6xl font-poppinsMedium animate-marquee_ltr">
+          Experienced Frontend Engineer Available For Hire *&nbsp;
+        </ScrollingText>
+      </div>
+      <div className="flex z-50 relative bg-white py-4">
+        <ScrollingText className="inline-block uppercase py-4 whitespace-nowrap h-full text-4xl font-poppinsMedium animate-marquee_rtl">
+          HTML & CSS * Javascript * MERN Stack * Tech Leadership * Consultant *
+          Web Development *&nbsp;
+        </ScrollingText>
       </div>
     </>
   );

@@ -21,4 +21,16 @@
   h5 {
     @apply text-lg;
   }
+  @font-face {
+    font-family: "poppinsExtrabold";
+    src: url("../fonts/Poppins-ExtraBold.ttf");
+  }
+  @font-face {
+    font-family: "poppinsBold";
+    src: url("../fonts/Poppins-Bold.ttf");
+  }
+  @font-face {
+    font-family: "poppinsMedium";
+    src: url("../fonts/Poppins-Medium.ttf");
+  }
 }
