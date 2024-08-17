@@ -10,7 +10,7 @@ const DynamicTextComp: FC<DynamicTextProps> = (
     "Frontend Engineer  ",
     "Adobe Stock Contributor  ",
     "Team Leader  ",
-    "15yrs Old Professional  ",
+    "15yrs Experienced  ",
     "Table Tennis Lover  ",
     "Badminton Lover  ",
     "Writer  ",
