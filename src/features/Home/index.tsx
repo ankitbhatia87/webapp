@@ -1,4 +1,11 @@
-import { FC, ReactElement, ReactNode } from "react";
+import {
+  FC,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 import Banner from "../Banner";
 import Card from "../common/Card";
 import { CardCommonData } from "../../ui.kit/Button/interface";
@@ -13,34 +20,46 @@ import Timeline from "../../utils/timeline";
 import ScrollingText from "../ScrollingText";
 
 const Home: FC = (): ReactElement => {
+  const [svgDimensions, setSvgDimensions] = useState<{
+    width: number;
+    height: number;
+  }>({ width: 0, height: 0 });
+  const textRef = useRef<SVGTextElement>(null);
+
   const cardsData: CardCommonData[] = [
     {
-      icon: <Lottie options={technologyLottieOptions} height={60} width={60} />,
+      icon: (
+        <Lottie options={technologyLottieOptions} height={100} width={100} />
+      ),
       heading: "Technical Expertise",
-      text: "Proficient in HTML, CSS, and JavaScript, I craft intuitive interfaces that seamlessly blend aesthetics with usability. Leveraging frameworks like React and NodeJS, I bring dynamic and responsive elements to life, ensuring optimal performance across devices and browsers."
+      text: "Proficient in HTML, CSS, and JavaScript, I design intuitive, visually appealing interfaces. Using React and NodeJS, I create dynamic, responsive elements optimized for all devices."
     },
     {
-      icon: <Lottie options={teamworkLottieOptions} height={60} width={60} />,
+      icon: <Lottie options={teamworkLottieOptions} height={100} width={100} />,
       heading: "Teamwork",
-      text: "Whether in a leadership role or as an individual contributor in a team, I am committed to build a culture of collaboration, continuous improvement, and mutual support among all stakeholders. With strong communication and interpersonal skills, I effectively contribute to team dynamics."
+      text: "Whether leading or contributing, I foster collaboration, continuous improvement, and support. My strong communication skills enhance team dynamics."
     },
     {
       icon: (
-        <Lottie options={resultOrientedLottieOptions} height={60} width={60} />
+        <Lottie
+          options={resultOrientedLottieOptions}
+          height={100}
+          width={100}
+        />
       ),
       heading: "Result Oriented",
-      text: "With my problem-solving skills and efficient team management, I navigate obstacles and drive progress towards desired outcomes. My adaptability and agility enable me to brainstorm strategies with business stakeholders, while meeting the evolving project requirements yet ensuring the timely deliveries."
+      text: "My problem-solving skills and efficient team management drive progress and overcome obstacles. I adapt to evolving project needs, collaborating with stakeholders to ensure timely deliveries."
     },
     {
       icon: (
         <Lottie
           options={qualityPerformanceLottieOptions}
-          height={60}
-          width={60}
+          height={100}
+          width={100}
         />
       ),
       heading: "Quality & Performance",
-      text: "With a meticulous attention to detail, I ensure that every aspect of the development process is executed to the highest standards. Leveraging best practices and sophisticated tools, I continuously strive to enhance performance to ensure an optimal user experience across platforms and devices."
+      text: "I ensure top-tier development with meticulous detail, leveraging best practices and tools to enhance performance and deliver optimal user experiences across platforms."
     }
   ];
 
@@ -148,35 +167,64 @@ const Home: FC = (): ReactElement => {
       ]
     }
   ];
+
+  useEffect(() => {
+    if (textRef.current) {
+      const box = textRef.current.getBBox();
+      setSvgDimensions({ width: box.width, height: box.height });
+    }
+  }, []);
+
   return (
     <>
       <Banner />
-      <div className="p-6 grid gap-6 md:grid-cols-2 xl:grid-cols-4 bg-slate-200 transition-all">
+      <div className="px-6 lg:px-32 py-6 lg:py-16 grid gap-6 lg:gap-8 md:grid-cols-2 xl:grid-cols-4 bg-slate-200 transition-all zigzag relative">
         {cardsData.map(
           (card): ReactNode => (
             <Card className="p-6">
               <div className="flex justify-start">
                 <div>{card.icon}</div>
               </div>
-              <h3>{card.heading}</h3>
+              <h3 className="font-poppinsMedium">{card.heading}</h3>
               <p>{card.text}</p>
             </Card>
           )
         )}
       </div>
-      <div className="flex justify-center relative">
+      <div className="flex justify-center items-center flex-col relative">
+        <h2 className="pt-10 pb-2 font-glorify uppercase bg-gradient-to-r from-brignt-orange to-bright-yellow text-transparent bg-clip-text">
+          Milestones
+        </h2>
+        <h4 className="font-euclidCircularBRegular text-zinc-400">
+          Life in a nutshell
+        </h4>
         <Timeline data={timelineData} />
         <p className="absolute -bottom-[96px] text-[192px] right-0 z-10 text-slate-200 hidden sm:block">
           ankit
         </p>
       </div>
       <div className="flex z-50 relative bg-white pt-2 md:pt-4">
-        <ScrollingText className="inline-block uppercase pt-4 pb-1 md:pb-2 whitespace-nowrap tracking-wide h-full text-4xl md:text-6xl font-poppinsMedium animate-marquee_ltr text-white drop-shadow-border">
-          Experienced Frontend Engineer Available For Hire *&nbsp;
+        <ScrollingText className="inline-block uppercase pt-4 pb-1 md:pb-2 whitespace-nowrap tracking-wide h-full text-4xl md:text-6xl font-poppinsMedium animate-marquee_rtl">
+          <svg
+            className="whitespace-nowrap relative"
+            width={svgDimensions.width}
+            height={svgDimensions.height}
+          >
+            <text
+              x="0"
+              y={svgDimensions.height - 5}
+              fill="none"
+              stroke="grey"
+              className="whitespace-nowrap"
+              ref={textRef}
+            >
+              Experienced Frontend Engineer Available For Hire &nbsp;*&nbsp;
+            </text>
+          </svg>
         </ScrollingText>
       </div>
       <div className="flex z-50 relative bg-white pb-2 md:pb-4">
-        <ScrollingText className="inline-block uppercase pb-4 pt-1  md:pt-2 whitespace-nowrap h-full text-2xl md:text-4xl font-poppinsMedium animate-marquee_rtl text-black">
+        <ScrollingText className="inline-block uppercase pb-4 pt-1  md:pt-2 whitespace-nowrap h-full text-2xl md:text-4xl font-poppinsMedium animate-marquee_ltr text-black">
           HTML & CSS * Javascript * MERN Stack * Tech Leadership * Consultant *
           Web Development *&nbsp;
         </ScrollingText>

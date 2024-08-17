@@ -6,21 +6,8 @@
   * {
     @apply text-slate-800;
   }
-  h1 {
-    @apply text-4xl lg:text-7xl pb-6;
-  }
-  h2 {
-    @apply text-2xl lg:text-4xl font-bold pb-5;
-  }
-  h3 {
-    @apply text-xl lg:text-3xl font-bold pb-4;
-  }
-  h4 {
-    @apply text-xl;
-  }
-  h5 {
-    @apply text-lg;
-  }
+
+  /* Font Families */
   @font-face {
     font-family: "poppinsExtrabold";
     src: url("../fonts/Poppins-ExtraBold.ttf");
@@ -32,5 +19,39 @@
   @font-face {
     font-family: "poppinsMedium";
     src: url("../fonts/Poppins-Medium.ttf");
+  }
+  @font-face {
+    font-family: "glorify";
+    src: url("../fonts/Glorifydemo.otf");
+  }
+  @font-face {
+    font-family: "euclid-circular-b-regular";
+    src: url("../fonts/euclid-circular-b-regular.ttf");
+  }
+  @font-face {
+    font-family: "euclid-circular-b-light";
+    src: url("../fonts/euclid-circular-b-light.ttf");
+  }
+
+  /* Headings  */
+  h1 {
+    @apply text-4xl lg:text-7xl pb-6;
+  }
+  h2 {
+    @apply text-2xl lg:text-4xl font-bold pb-5;
+  }
+  h3 {
+    @apply text-lg lg:text-xl font-bold pb-4;
+  }
+  h4 {
+    @apply text-xl;
+  }
+  h5 {
+    @apply text-lg;
+  }
+
+  /* Custom alternate cards */
+  .zigzag div div:nth-child(even) {
+    top: 20%;
   }
 }
