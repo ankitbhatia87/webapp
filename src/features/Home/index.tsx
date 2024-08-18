@@ -191,18 +191,6 @@ const Home: FC = (): ReactElement => {
           )
         )}
       </div>
-      <div className="flex justify-center items-center flex-col relative">
-        <h2 className="pt-10 pb-2 font-glorify uppercase bg-gradient-to-r from-brignt-orange to-bright-yellow text-transparent bg-clip-text">
-          Milestones
-        </h2>
-        <h4 className="font-euclidCircularBRegular text-zinc-400">
-          Life in a nutshell
-        </h4>
-        <Timeline data={timelineData} />
-        <p className="absolute -bottom-[96px] text-[192px] right-0 z-10 text-slate-200 hidden sm:block">
-          ankit
-        </p>
-      </div>
       <div className="flex z-50 relative bg-white pt-2 md:pt-4">
         <ScrollingText className="inline-block uppercase pt-4 pb-1 md:pb-2 whitespace-nowrap tracking-wide h-full text-4xl md:text-6xl font-poppinsMedium animate-marquee_rtl">
           <svg
@@ -228,6 +216,18 @@ const Home: FC = (): ReactElement => {
           HTML & CSS * Javascript * MERN Stack * Tech Leadership * Consultant *
           Web Development *&nbsp;
         </ScrollingText>
+      </div>
+      <div className="flex justify-center items-center flex-col relative">
+        <h2 className="pt-10 pb-2 font-glorify uppercase bg-gradient-to-r from-brignt-orange to-bright-yellow text-transparent bg-clip-text">
+          Milestones
+        </h2>
+        <h4 className="font-euclidCircularBRegular text-zinc-400">
+          Life in a nutshell
+        </h4>
+        <Timeline data={timelineData} />
+        <p className="absolute -bottom-[96px] text-[192px] right-0 z-10 text-slate-200 hidden sm:block">
+          ankit
+        </p>
       </div>
     </>
   );
