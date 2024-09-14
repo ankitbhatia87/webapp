@@ -15,7 +15,7 @@ const Banner: FC = (): ReactElement => {
   const variants = isMedium
     ? {
         initial: {
-          x: 100,
+          x: 50,
           opacity: 0
         }
       }
