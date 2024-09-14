@@ -6,6 +6,7 @@ import {
   useRef,
   useState
 } from "react";
+import { motion } from "framer-motion";
 import Banner from "../Banner";
 import Card from "../common/Card";
 import { CardCommonData } from "../../ui.kit/Button/interface";
@@ -28,6 +29,7 @@ const Home: FC = (): ReactElement => {
 
   const cardsData: CardCommonData[] = [
     {
+      id: 1,
       icon: (
         <Lottie options={technologyLottieOptions} height={100} width={100} />
       ),
@@ -35,11 +37,13 @@ const Home: FC = (): ReactElement => {
       text: "Proficient in HTML, CSS, and JavaScript, I design intuitive, visually appealing interfaces. Using React and NodeJS, I create dynamic, responsive elements optimized for all devices."
     },
     {
+      id: 2,
       icon: <Lottie options={teamworkLottieOptions} height={100} width={100} />,
       heading: "Teamwork",
       text: "Whether leading or contributing, I foster collaboration, continuous improvement, and support. My strong communication skills enhance team dynamics."
     },
     {
+      id: 3,
       icon: (
         <Lottie
           options={resultOrientedLottieOptions}
@@ -51,6 +55,7 @@ const Home: FC = (): ReactElement => {
       text: "My problem-solving skills and efficient team management drive progress and overcome obstacles. I adapt to evolving project needs, collaborating with stakeholders to ensure timely deliveries."
     },
     {
+      id: 4,
       icon: (
         <Lottie
           options={qualityPerformanceLottieOptions}
@@ -178,19 +183,30 @@ const Home: FC = (): ReactElement => {
   return (
     <>
       <Banner />
-      <div className="px-6 lg:px-32 py-6 lg:py-16 grid gap-6 lg:gap-8 md:grid-cols-2 xl:grid-cols-4 bg-slate-200 transition-all zigzag relative">
-        {cardsData.map(
-          (card): ReactNode => (
-            <Card className="p-6">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="px-6 lg:px-32 py-6 lg:py-16 grid gap-6 lg:gap-8 md:grid-cols-2 xl:grid-cols-4 bg-slate-200 transition-all zigzag relative opacity-0"
+      >
+        {cardsData.map((card): ReactNode => {
+          return (
+            <Card
+              key={card.id}
+              className="p-6"
+              initial={{ y: 100 }}
+              whileInView={{ y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="flex justify-start">
                 <div>{card.icon}</div>
               </div>
               <h3 className="font-poppinsMedium">{card.heading}</h3>
               <p>{card.text}</p>
             </Card>
-          )
-        )}
-      </div>
+          );
+        })}
+      </motion.div>
       <div className="flex z-50 relative bg-white pt-2 md:pt-4">
         <ScrollingText className="inline-block uppercase pt-4 pb-1 md:pb-2 whitespace-nowrap tracking-wide h-full text-4xl md:text-6xl font-poppinsMedium animate-marquee_rtl">
           <svg
