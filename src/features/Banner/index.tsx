@@ -1,4 +1,4 @@
-import { FC, ReactElement, useEffect } from "react";
+import { FC, ReactElement } from "react";
 import { motion } from "framer-motion";
 import DynamicTextComp from "./components/DynamicText";
 import ABWButton from "../../ui.kit/Button";
