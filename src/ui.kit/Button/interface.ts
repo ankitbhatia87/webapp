@@ -12,6 +12,7 @@ export interface ButtonTypeProp extends ButtonProps {
 }
 
 export interface CardCommonData {
+  id: number;
   icon: ReactNode;
   heading: string;
   text: string;

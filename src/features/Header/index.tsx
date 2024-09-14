@@ -1,9 +1,8 @@
 import { FC, ReactElement } from "react";
-// import Navigation from "../Navigation";
 import ABWButton from "../../ui.kit/Button";
 import { ButtonType } from "../../ui.kit/Button/enum";
 import Resume from "../../assets/pdf/resume.pdf";
-import { GitHubLogo } from "../../assets/images/icons";
+import { AdobeStockLogo, GitHubLogo } from "../../assets/images/icons";
 import ABWLink from "../../ui.kit/Link";
 
 const Header: FC = (): ReactElement => {
@@ -18,12 +17,20 @@ const Header: FC = (): ReactElement => {
     >
       <div className="absolute w-full">
         <div className="flex justify-center p-4 md:justify-end gap-4 items-center">
+          {/* <Navigation /> */}
           <ABWLink
             to=""
             href="https://github.com/ankitbhatia87/webapp"
             target="_blank"
           >
             <GitHubLogo />
+          </ABWLink>
+          <ABWLink
+            to=""
+            href="https://stock.adobe.com/in/contributor/210554590/Ankit"
+            target="_blank"
+          >
+            <AdobeStockLogo width={30} height={30} />
           </ABWLink>
           <ABWButton
             type={ButtonType.Secondary}
@@ -32,7 +39,6 @@ const Header: FC = (): ReactElement => {
           >
             Download CV
           </ABWButton>
-          {/* <Navigation /> */}
         </div>
       </div>
     </div>
