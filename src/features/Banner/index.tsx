@@ -34,7 +34,7 @@ const Banner: FC = (): ReactElement => {
       className="min-h-[30rem] pt-16 relative grid grid-flow-row"
     >
       <div className="absolute inset-0 z-0 h-full w-full bg-black bg-[radial-gradient(#1b1d1d_3px,transparent_1px)] [background-size:6px_6px]"></div>
-      <div className="grid justify-self-center max-w-screen-2xl w-full z-10 pt-8 xl:max-w-screen-xl lg:px-14">
+      <div className="grid justify-self-center max-w-screen-2xl w-full z-10 pt-8 md:pt-0 xl:max-w-screen-xl lg:px-14">
         <div className="flex flex-col items-end lg:flex-row lg:justify-center">
           <motion.div
             initial={{ y: -100 }}

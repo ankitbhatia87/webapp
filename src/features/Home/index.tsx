@@ -233,7 +233,7 @@ const Home: FC = (): ReactElement => {
           Web Development *&nbsp;
         </ScrollingText>
       </div>
-      <div className="flex justify-center items-center flex-col relative">
+      <div className="flex justify-center items-center flex-col relative  overflow-hidden">
         <h2 className="pt-10 pb-2 font-glorify uppercase bg-gradient-to-r from-brignt-orange to-bright-yellow text-transparent bg-clip-text">
           Milestones
         </h2>

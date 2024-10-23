@@ -3,6 +3,7 @@ import App from "./App";
 // import { LazyAbout, LazyHome } from "./lazy-components";
 import Home from "./features/Home";
 import About from "./features/About";
+import Gallery from "./features/Gallery";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />
+      },
+      {
+        path: "/gallery",
+        element: <Gallery />
       }
     ]
   }
