@@ -8,7 +8,6 @@ import Ankit from "../../assets/ankit.png";
 import Image from "../../ui.kit/Image";
 import ABWLink from "../../ui.kit/Link";
 import useMatchMedia from "../../utils/match-media";
-import { GitHubLogo } from "../../assets/images/icons";
 
 const Banner: FC = (): ReactElement => {
   const isMedium = useMatchMedia("(min-width: 768px)");
@@ -35,7 +34,7 @@ const Banner: FC = (): ReactElement => {
       className="min-h-[30rem] pt-16 relative grid grid-flow-row"
     >
       <div className="absolute inset-0 z-0 h-full w-full bg-black bg-[radial-gradient(#1b1d1d_3px,transparent_1px)] [background-size:6px_6px]"></div>
-      <div className="grid justify-self-center max-w-screen-2xl w-full z-10 pt-8 md:pt-0 xl:max-w-screen-xl lg:px-14">
+      <div className="grid justify-self-center max-w-screen-2xl w-full z-10 pt-8 xl:max-w-screen-xl lg:px-14">
         <div className="flex flex-col items-end lg:flex-row lg:justify-center">
           <motion.div
             initial={{ y: -100 }}
@@ -44,18 +43,7 @@ const Banner: FC = (): ReactElement => {
             className="lg:w-5/12 w-full flex flex-col items-center lg:items-start lg:pb-28 lg:pt-40"
           >
             <GreetingText />
-            <div className="flex gap-4">
-              <ABWLink
-                to=""
-                href="https://github.com/ankitbhatia87/webapp/blob/main/src/utils/typing-text.util.tsx"
-                target="_blank"
-                title="View typing text code"
-                className="opacity-60 hover:opacity-100 transition-opacity"
-              >
-                <GitHubLogo />
-              </ABWLink>
-              <DynamicTextComp className="w-full text-center lg:flex lg:gap-2 font-euclidCircularBLight" />
-            </div>
+            <DynamicTextComp className="w-full text-center lg:flex lg:gap-2 font-euclidCircularBLight" />
             <ABWLink
               to=""
               href="https://www.linkedin.com/in/bhatia87"

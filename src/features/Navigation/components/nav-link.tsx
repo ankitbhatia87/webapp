@@ -8,11 +8,8 @@ interface Props {
 }
 
 const NavLinkComp: FC<Props> = ({ name, label, redirect }): ReactElement => (
-  <div id={name} className="flex items-center">
-    <Link
-      to={redirect}
-      className="py-4 text-slate-200 bg-neutral-700 md:bg-transparent px-5 rounded-xl"
-    >
+  <div id={name} className="flex">
+    <Link to={redirect} className="py-4">
       {label}
     </Link>
   </div>
