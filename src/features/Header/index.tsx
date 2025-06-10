@@ -29,6 +29,7 @@ const Header: FC = (): ReactElement => {
               to=""
               href="https://github.com/ankitbhatia87/webapp"
               target="_blank"
+              title="View code of this website"
             >
               <GitHubLogo />
             </ABWLink>

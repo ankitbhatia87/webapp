@@ -165,9 +165,14 @@ const Home: FC = (): ReactElement => {
       year: 2024,
       description:
         "Commenced building my brand starting by developing my website",
+      tags: ["Introspection", "Future plan", "Buckled up"]
+    },
+    {
+      year: 2025,
+      description: "Restart! Refocus! Rebuild!",
       tags: [
-        "You are here...",
-        "I am here...",
+        "Migrated to Australia",
+        "Now, I am here...",
         "Lets connect to build something crazy"
       ]
     }

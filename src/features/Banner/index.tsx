@@ -8,6 +8,7 @@ import Ankit from "../../assets/ankit.png";
 import Image from "../../ui.kit/Image";
 import ABWLink from "../../ui.kit/Link";
 import useMatchMedia from "../../utils/match-media";
+import { GitHubLogo } from "../../assets/images/icons";
 
 const Banner: FC = (): ReactElement => {
   const isMedium = useMatchMedia("(min-width: 768px)");
@@ -43,7 +44,18 @@ const Banner: FC = (): ReactElement => {
             className="lg:w-5/12 w-full flex flex-col items-center lg:items-start lg:pb-28 lg:pt-40"
           >
             <GreetingText />
-            <DynamicTextComp className="w-full text-center lg:flex lg:gap-2 font-euclidCircularBLight" />
+            <div className="flex gap-4">
+              <ABWLink
+                to=""
+                href="https://github.com/ankitbhatia87/webapp/blob/main/src/utils/typing-text.util.tsx"
+                target="_blank"
+                title="View typing text code"
+                className="opacity-60 hover:opacity-100 transition-opacity"
+              >
+                <GitHubLogo />
+              </ABWLink>
+              <DynamicTextComp className="w-full text-center lg:flex lg:gap-2 font-euclidCircularBLight" />
+            </div>
             <ABWLink
               to=""
               href="https://www.linkedin.com/in/bhatia87"
