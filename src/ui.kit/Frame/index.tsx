@@ -2,10 +2,10 @@ import Image from "../Image";
 import { FrameProps } from "./interface";
 
 const Frame = (props: FrameProps) => {
-  const { imageData, className } = props;
+  const { imageData, className, frameClasses } = props;
   const { src, alt } = imageData ?? {};
   return (
-    <div>
+    <div className={frameClasses}>
       <Image src={src} alt={alt} className={className} />
     </div>
   );
