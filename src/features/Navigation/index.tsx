@@ -4,9 +4,9 @@ import NavigationComp from "./components/navigation";
 const Navigation: FC = (): ReactElement => {
   const navData = [
     {
-      name: "about",
-      label: "About Me",
-      redirect: "/about"
+      name: "gallery",
+      label: "Gallery",
+      redirect: "/gallery"
     }
   ];
   return <NavigationComp navData={navData} />;

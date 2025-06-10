@@ -32,8 +32,8 @@ export default {
         euclidCircularBLight: ['"euclid-circular-b-light"', "sans serif"],
         euclidCircularBRegular: ['"euclid-circular-b-regular"', "sans serif"]
       },
-      dropShadow: {
-        border: "0 0 2px rgba(0, 0, 0, .6)"
+      boxShadow: {
+        "up-2xl": "0 0 10px 0 rgba(0, 0, 0, .5)"
       }
     }
   },
