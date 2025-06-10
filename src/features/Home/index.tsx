@@ -165,14 +165,9 @@ const Home: FC = (): ReactElement => {
       year: 2024,
       description:
         "Commenced building my brand starting by developing my website",
-      tags: ["Introspection", "Future plan", "Buckled up"]
-    },
-    {
-      year: 2025,
-      description: "Restart! Refocus! Rebuild!",
       tags: [
-        "Migrated to Australia",
-        "Now, I am here...",
+        "You are here...",
+        "I am here...",
         "Lets connect to build something crazy"
       ]
     }
@@ -238,7 +233,7 @@ const Home: FC = (): ReactElement => {
           Web Development *&nbsp;
         </ScrollingText>
       </div>
-      <div className="flex justify-center items-center flex-col relative  overflow-hidden">
+      <div className="flex justify-center items-center flex-col relative">
         <h2 className="pt-10 pb-2 font-glorify uppercase bg-gradient-to-r from-brignt-orange to-bright-yellow text-transparent bg-clip-text">
           Milestones
         </h2>

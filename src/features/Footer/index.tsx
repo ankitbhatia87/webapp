@@ -3,7 +3,7 @@ import { AWSLogo } from "../../assets/images/icons";
 
 const Footer: FC = (): ReactElement => {
   return (
-    <div id="footer" className="bg-black p-6 text-center">
+    <div id="footer" className="bg-black p-6 text-center z-20">
       <p className="text-white">&copy; Ankit Bhatia</p>
       <p className="text-white flex justify-center">
         This website is deployed on
