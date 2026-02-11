@@ -10,6 +10,67 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Custom colors */
+  --color-custom-orange: #FF9900;
+  --color-brignt-orange: #f83600;
+  --color-bright-yellow: #facc22;
+  
+  /* Custom fonts */
+  --font-poppins-extrabold: "poppinsExtrabold", sans-serif;
+  --font-poppins-bold: "poppinsBold", sans-serif;
+  --font-poppins-medium: "poppinsMedium", sans-serif;
+  --font-glorify: "glorify", sans-serif;
+  --font-euclid-circular-b-light: "euclid-circular-b-light", sans-serif;
+  --font-euclid-circular-b-regular: "euclid-circular-b-regular", sans-serif;
+
+  /* Custom animations */
+  --animate-blink: blink 1s ease-in-out infinite;
+  --animate-marquee-ltr: marquee_ltr 20s linear infinite;
+  --animate-marquee-rtl: marquee_rtl 15s linear infinite;
+
+  /* Font sizes */
+  --font-size-xs: 0.75rem;
+  --line-height-xs: 1rem;
+  --font-size-sm: 0.875rem;
+  --line-height-sm: 1.25rem;
+  --font-size-base: 1rem;
+  --line-height-base: 1.5rem;
+  --font-size-lg: 1.125rem;
+  --line-height-lg: 1.75rem;
+  --font-size-xl: 1.25rem;
+  --line-height-xl: 1.75rem;
+  --font-size-2xl: 1.5rem;
+  --line-height-2xl: 2rem;
+  --font-size-3xl: 1.875rem;
+  --line-height-3xl: 2.25rem;
+  --font-size-4xl: 2.25rem;
+  --line-height-4xl: 2.5rem;
+  --font-size-5xl: 3rem;
+  --line-height-5xl: 1;
+  --font-size-6xl: 3.75rem;
+  --line-height-6xl: 1;
+  --font-size-7xl: 4.5rem;
+  --line-height-7xl: 1;
+  --font-size-8xl: 6rem;
+  --line-height-8xl: 1;
+  --font-size-9xl: 8rem;
+  --line-height-9xl: 1;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes marquee_rtl {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee_ltr {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +80,122 @@
   }
 }
 
+/* Font face declarations */
+@font-face {
+  font-family: "poppinsExtrabold";
+  src: url("/fonts/Poppins-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "poppinsBold";
+  src: url("/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "poppinsMedium";
+  src: url("/fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "glorify";
+  src: url("/fonts/Glorifydemo.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "euclid-circular-b-light";
+  src: url("/fonts/euclid-circular-b-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "euclid-circular-b-regular";
+  src: url("/fonts/euclid-circular-b-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Default heading styles */
+h1 {
+  font-size: 2.25rem;
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 4.5rem;
+  }
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-bottom: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 2.25rem;
+  }
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 1024px) {
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+/* Utility classes for custom fonts */
+.font-poppinsExtrabold { font-family: var(--font-poppins-extrabold); }
+.font-poppinsBold { font-family: var(--font-poppins-bold); }
+.font-poppinsMedium { font-family: var(--font-poppins-medium); }
+.font-glorify { font-family: var(--font-glorify); }
+.font-euclidCircularBLight { font-family: var(--font-euclid-circular-b-light); }
+.font-euclidCircularBRegular { font-family: var(--font-euclid-circular-b-regular); }
+
+/* Animation utility classes */
+.animate-blink { animation: var(--animate-blink); }
+.animate-marquee_ltr { animation: var(--animate-marquee-ltr); }
+.animate-marquee_rtl { animation: var(--animate-marquee-rtl); }
+
+/* Custom color utilities */
+.fill-custom-orange { fill: var(--color-custom-orange); }
+.text-brignt-orange { color: var(--color-brignt-orange); }
+.text-bright-yellow { color: var(--color-bright-yellow); }
+
+/* Custom alternate cards */
+.zigzag div div:nth-child(even) {
+  top: 20%;
 }
