@@ -192,14 +192,14 @@ const Home: FC = (): ReactElement => {
         <ScrollingText className="inline-block uppercase pt-4 pb-1 md:pb-2 whitespace-nowrap tracking-wide h-full text-4xl md:text-6xl font-poppinsMedium animate-marquee_rtl">
           <svg className="whitespace-nowrap relative" width={svgDimensions.width} height={svgDimensions.height}>
             <text x="0" y={svgDimensions.height - 5} fill="none" stroke="grey" className="whitespace-nowrap" ref={textRef}>
-              Experienced Frontend Engineer Available For Hire *
+              &nbsp;Experienced Frontend Engineer Available For Hire •
             </text>
           </svg>
         </ScrollingText>
       </div>
       <div className="flex z-50 relative bg-white pb-2 md:pb-4">
         <ScrollingText className="inline-block uppercase pb-4 pt-1 md:pt-2 whitespace-nowrap h-full text-2xl md:text-4xl font-poppinsMedium animate-marquee_ltr text-black">
-          HTML CSS * Javascript * MERN Stack * Tech Leadership *
+          &nbsp;HTML • CSS • JavaScript • React • Next.js • MERN Stack • Web Performance • Accessibility • Security • Scalable Architecture • Tech Leadership •
         </ScrollingText>
       </div>
       <div className="flex justify-center items-center flex-col relative">
