@@ -9,7 +9,7 @@ const DynamicTextComp: FC<DynamicTextProps> = (
 ): ReactElement => {
   const { className } = props;
   const data = [
-    "Performance-First Frontend Architect  ",
+    "Performance-First Frontend  ",
     "Visual Storyteller Who Codes  ",
     "Security as a Baseline Mindset ",
     "Product-Minded Problem Solver  ",

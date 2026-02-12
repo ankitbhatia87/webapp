@@ -3,7 +3,7 @@
 import { FC, ReactElement } from "react";
 import ABWButton from "@/app/components/Button";
 import { ButtonType } from "@/app/components/Button/enum";
-import { AdobeStockLogo, GitHubLogo } from "@/app/components/Icons";
+import { AdobeStockLogo, GitHubLogo, LinkedInLogo } from "@/app/components/Icons";
 import ABWLink from "@/app/components/Link";
 
 const Header: FC = (): ReactElement => {
@@ -31,6 +31,13 @@ const Header: FC = (): ReactElement => {
             target="_blank"
           >
             <AdobeStockLogo width={30} height={30} />
+          </ABWLink>
+          <ABWLink
+            to=""
+            href="https://www.linkedin.com/in/bhatia87"
+            target="_blank"
+          >
+            <LinkedInLogo width={26} height={26} />
           </ABWLink>
           <ABWButton
             type={ButtonType.Secondary}

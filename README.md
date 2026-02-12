@@ -2,9 +2,6 @@
 
 A modern, high-performance portfolio website built with Next.js 16, TypeScript, and Tailwind CSS v4.
 
-## 🚀 Live Demo
-Deploy this project to Vercel in one click! See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
-
 ## ✨ Features
 
 - **Next.js 16.1.6** with App Router
@@ -81,7 +78,6 @@ npm i -g vercel
 vercel
 ```
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
 
 ## 📄 License
 
