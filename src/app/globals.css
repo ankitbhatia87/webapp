@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #171717;
   --foreground: #171717;
 }
 
@@ -197,4 +197,36 @@ h5 {
 /* Custom alternate cards */
 .zigzag div div:nth-child(even) {
   top: 20%;
+}
+
+/* Pinterest-style Masonry Gallery Grid */
+.gallery-grid {
+  columns: 1;
+  column-gap: 1rem;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 640px) {
+  .gallery-grid {
+    columns: 2;
+  }
+}
+
+/* Desktop: 4 columns */
+@media (min-width: 1024px) {
+  .gallery-grid {
+    columns: 4;
+  }
+}
+
+/* Large Desktop: 6 columns */
+@media (min-width: 1280px) {
+  .gallery-grid {
+    columns: 6;
+  }
 }
