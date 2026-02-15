@@ -174,7 +174,7 @@ const Header: FC = (): ReactElement => {
                 <>
                   <ABWLink
                     to=""
-                    href="https://www.instagram.com/ankitbhatia.photography"
+                    href="https://www.instagram.com/storiesbyankitbhatia/"
                     target="_blank"
                   >
                     <InstagramLogo
