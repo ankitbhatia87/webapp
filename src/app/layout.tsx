@@ -18,6 +18,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Ankit Bhatia - Frontend Engineer",
   description: "Portfolio website of Ankit Bhatia - Frontend Engineer with 15+ years of experience",
+  openGraph: {
+    title: "Ankit Bhatia Profile",
+    description: "15 years work-ex | ReactJS | Javascript | Tech Lead",
+    url: "https://www.ankitbhatia.com",
+    images: [
+      {
+        url: "https://i.postimg.cc/j5YDx7hf/whatsapp-link-preview.jpg",
+        alt: "Ankit Bhatia Profile",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({

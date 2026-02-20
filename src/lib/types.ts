@@ -4,7 +4,7 @@ export type Category =
   | "Kids"
   | "Maternity"
   | "Lifestyle"
-  | "Candid Moments"
+  | "Product"
   | "Wildlife"
   | "Nature";
 
@@ -22,7 +22,7 @@ export const CATEGORIES: Category[] = [
   "Kids",
   "Maternity",
   "Lifestyle",
-  "Candid Moments",
+  "Product",
   "Wildlife",
   "Nature",
 ];
@@ -38,7 +38,7 @@ const SLUG_TO_CATEGORY: Record<string, Category> = {
   kids: "Kids",
   maternity: "Maternity",
   lifestyle: "Lifestyle",
-  "candid-moments": "Candid Moments",
+  product: "Product",
   wildlife: "Wildlife",
   nature: "Nature",
 };

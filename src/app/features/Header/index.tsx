@@ -83,8 +83,8 @@ const Header: FC = (): ReactElement => {
             />
           </button>
 
-          {/* Social Icons & Download Button */}
-          <div className="hidden md:flex gap-4 items-center ml-auto">
+          {/* Social Icons & Download Button - Always Visible */}
+          <div className="flex gap-2 md:gap-4 items-center ml-auto">
             {isGallery ? (
               <>
                 <ABWLink
@@ -148,7 +148,7 @@ const Header: FC = (): ReactElement => {
             mobileMenuOpen ? "max-h-80 mt-4" : "max-h-0"
           }`}
         >
-          <nav className="flex flex-col gap-4 pb-4 border-t border-gray-700 pt-4">
+          <nav className="flex flex-col gap-4 pb-4 border-t border-gray-700 pt-4 pl-3">
             <Link
               href="/"
               className={`font-poppinsMedium transition-colors ${
@@ -167,56 +167,6 @@ const Header: FC = (): ReactElement => {
             >
               Gallery
             </Link>
-
-            {/* Mobile Social Icons */}
-            <div className="flex gap-4 items-center pt-2 border-t border-gray-700">
-              {isGallery ? (
-                <>
-                  <ABWLink
-                    to=""
-                    href="https://www.instagram.com/storiesbyankitbhatia/"
-                    target="_blank"
-                  >
-                    <InstagramLogo
-                      width={24}
-                      height={24}
-                      className="text-white hover:text-pink-500 transition-all duration-300"
-                    />
-                  </ABWLink>
-                  <ABWLink
-                    to=""
-                    href="https://stock.adobe.com/in/contributor/210554590/Ankit"
-                    target="_blank"
-                  >
-                    <AdobeStockLogo width={28} height={28} className="text-white hover:text-red-500 transition-all duration-300" />
-                  </ABWLink>
-                </>
-              ) : (
-                <>
-                  <ABWLink
-                    to=""
-                    href="https://github.com/ankitbhatia87/webapp"
-                    target="_blank"
-                  >
-                    <GitHubLogo className="w-6 h-6 text-white hover:text-gray-400 transition-all duration-300" />
-                  </ABWLink>
-                  <ABWLink
-                    to=""
-                    href="https://www.linkedin.com/in/bhatia87"
-                    target="_blank"
-                  >
-                    <LinkedInLogo width={24} height={24} className="text-white hover:text-blue-500 transition-all duration-300" />
-                  </ABWLink>
-                  <ABWButton
-                    type={ButtonType.Secondary}
-                    className="text-sm px-3 py-1.5"
-                    onClick={handleCVDownloadBtnClick}
-                  >
-                    Download CV
-                  </ABWButton>
-                </>
-              )}
-            </div>
           </nav>
         </div>
       </div>

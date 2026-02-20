@@ -64,16 +64,16 @@ const GalleryPage: FC = (): ReactElement => {
       </div>
 
       {/* Pinterest-style Masonry Grid */}
-      <div className="gallery-grid px-4 pb-12 max-w-7xl mx-auto">
-        {loading ? (
-          <div className="text-gray-400 text-center py-20 col-span-full">
-            Loading gallery...
-          </div>
-        ) : filteredImages.length === 0 ? (
-          <div className="text-gray-400 text-center py-20 col-span-full">
-            No photos found in this category.
-          </div>
-        ) : (
+      {loading ? (
+        <div className="text-gray-400 text-center py-20 px-4">
+          Loading gallery...
+        </div>
+      ) : filteredImages.length === 0 ? (
+        <div className="text-gray-400 text-center py-20 px-4">
+          No photos found in this category.
+        </div>
+      ) : (
+        <div className="gallery-grid px-4 pb-12 max-w-7xl mx-auto">
           <AnimatePresence mode="wait">
             {filteredImages.map((image) => (
               <motion.div
@@ -100,8 +100,8 @@ const GalleryPage: FC = (): ReactElement => {
               </motion.div>
             ))}
           </AnimatePresence>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -5,6 +5,11 @@ import { slugToCategory } from "@/lib/types";
 
 export async function GET() {
   try {
+    // If blob token is not set, return empty array (for local dev without Vercel Blob)
+    if (!process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN === 'your-vercel-blob-token-here') {
+      return NextResponse.json({ photos: [] });
+    }
+
     const { blobs } = await list({
       prefix: "photos/",
     });
