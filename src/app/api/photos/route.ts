@@ -1,7 +1,7 @@
 import { list } from "@vercel/blob";
 import { NextResponse } from "next/server";
-import type { PhotoItem } from "@/lib/types";
-import { slugToCategory } from "@/lib/types";
+import type { PhotoItem, Category } from "@/lib/types";
+import { CATEGORIES } from "@/lib/types";
 
 export async function GET() {
   try {
@@ -20,16 +20,36 @@ export async function GET() {
         return ["jpg", "jpeg", "png", "webp", "gif"].includes(ext || "");
       })
       .map((blob) => {
-        // Extract category from the pathname: photos/{category-slug}/{filename}
-        const parts = blob.pathname.split("/");
-        const categorySlug = parts[1] || "maternity";
-        const category = slugToCategory(categorySlug);
+        // Parse categories from pathname: photos/{timestamp}_{categories}_{filename}
+        // Example: photos/1234567890_Maternity-Portraits_image.jpg
+        const filename = blob.pathname.replace("photos/", "");
+        const parts = filename.split("_");
+        
+        let categories: Category[] = [];
+        
+        if (parts.length >= 2) {
+          // Extract categories from the second part
+          const categoriesPart = parts[1];
+          const categoryNames = categoriesPart.split("-");
+          
+          // Filter valid categories
+          categories = categoryNames.filter((cat) => 
+            CATEGORIES.includes(cat as Category)
+          ) as Category[];
+        }
+        
+        // Fallback to Maternity if no valid categories
+        if (categories.length === 0) {
+          categories = ["Maternity"];
+        }
+
+        const displayName = parts.slice(2).join("_").split(".")[0] || "photo";
 
         return {
           url: blob.url,
           pathname: blob.pathname,
-          category,
-          alt: parts[2]?.split(".")[0]?.replace(/-/g, " ") || "Gallery photo",
+          categories,
+          alt: displayName.replace(/-|_/g, " "),
           uploadedAt: blob.uploadedAt.toISOString(),
         };
       })

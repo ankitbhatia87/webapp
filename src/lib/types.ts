@@ -11,12 +11,12 @@ export type Category =
 export interface PhotoItem {
   url: string;
   pathname: string;
-  category: Category;
+  categories: Category[]; // Changed from single category to array
   alt: string;
   uploadedAt: string;
 }
 
-export const CATEGORIES: Category[] = [
+export const CATEGORIES: readonly Category[] = [
   "All",
   "Portraits",
   "Kids",
@@ -25,24 +25,4 @@ export const CATEGORIES: Category[] = [
   "Product",
   "Wildlife",
   "Nature",
-];
-
-/** Convert a Category to a lowercase folder-safe slug */
-export function categoryToSlug(category: Category): string {
-  return category.toLowerCase().replace(/\s+/g, "-");
-}
-
-/** Convert a lowercase slug back to its Category */
-const SLUG_TO_CATEGORY: Record<string, Category> = {
-  portraits: "Portraits",
-  kids: "Kids",
-  maternity: "Maternity",
-  lifestyle: "Lifestyle",
-  product: "Product",
-  wildlife: "Wildlife",
-  nature: "Nature",
-};
-
-export function slugToCategory(slug: string): Category {
-  return SLUG_TO_CATEGORY[slug] || "Maternity";
-}
+] as const;

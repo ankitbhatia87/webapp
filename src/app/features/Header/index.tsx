@@ -12,7 +12,7 @@ const Header: FC = (): ReactElement => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isGallery = pathname === "/gallery";
+  const isGallery = pathname === "/photography";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,14 +49,14 @@ const Header: FC = (): ReactElement => {
               Home
             </Link>
             <Link
-              href="/gallery"
+              href="/photography"
               className={`font-poppinsMedium transition-all duration-300 ${
-                pathname === "/gallery" 
+                pathname === "/photography" 
                   ? "text-orange-400 scale-110" 
                   : "text-white hover:text-orange-300"
               }`}
             >
-              Gallery
+              Photography
             </Link>
           </nav>
 
@@ -159,13 +159,13 @@ const Header: FC = (): ReactElement => {
               Home
             </Link>
             <Link
-              href="/gallery"
+              href="/photography"
               className={`font-poppinsMedium transition-colors ${
-                pathname === "/gallery" ? "text-orange-400" : "text-white"
+                pathname === "/photography" ? "text-orange-400" : "text-white"
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Gallery
+              Photography
             </Link>
           </nav>
         </div>

@@ -17,7 +17,7 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [deleting, setDeleting] = useState<string[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<Category>("Maternity");
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>(["Maternity"]);
   const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
   const [selectedForDelete, setSelectedForDelete] = useState<Set<string>>(new Set());
   const [uploadProgress, setUploadProgress] = useState("");
@@ -51,13 +51,18 @@ export default function AdminPage() {
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedFiles || selectedFiles.length === 0) return;
+    if (selectedCategories.length === 0) {
+      setUploadProgress("✗ Please select at least one category");
+      setTimeout(() => setUploadProgress(""), 3000);
+      return;
+    }
 
     setUploading(true);
     setUploadProgress(`Uploading ${selectedFiles.length} file(s)...`);
 
     try {
       const formData = new FormData();
-      formData.append("category", selectedCategory);
+      formData.append("categories", JSON.stringify(selectedCategories));
 
       for (let i = 0; i < selectedFiles.length; i++) {
         formData.append("files", selectedFiles[i]);
@@ -73,6 +78,7 @@ export default function AdminPage() {
       if (res.ok) {
         setUploadProgress(`✓ Uploaded ${data.count} photo(s) successfully!`);
         setSelectedFiles(null);
+        setSelectedCategories(["Maternity"]);
         // Reset file input
         const fileInput = document.getElementById("file-input") as HTMLInputElement;
         if (fileInput) fileInput.value = "";
@@ -86,6 +92,16 @@ export default function AdminPage() {
       setUploading(false);
       setTimeout(() => setUploadProgress(""), 4000);
     }
+  };
+
+  const toggleCategory = (category: Category) => {
+    if (category === "All") return; // Skip "All"
+    
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    );
   };
 
   const toggleSelectForDelete = (url: string) => {
@@ -132,7 +148,7 @@ export default function AdminPage() {
   const filteredPhotos =
     filterCategory === "All"
       ? photos
-      : photos.filter((p) => p.category === filterCategory);
+      : photos.filter((p) => p.categories.includes(filterCategory));
 
   if (status === "loading") {
     return (
@@ -171,24 +187,31 @@ export default function AdminPage() {
             Upload Photos
           </h2>
           <form onSubmit={handleUpload} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <div>
                 <label className="block text-sm text-gray-400 mb-1.5">
-                  Category
+                  Categories (select multiple)
                 </label>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) =>
-                    setSelectedCategory(e.target.value as Category)
-                  }
-                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-orange-400 transition-colors"
-                >
-                  {uploadCategories.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+                  {uploadCategories.map((category) => (
+                    <label
+                      key={category}
+                      className={`p-3 rounded-lg cursor-pointer border-2 transition-all text-center text-sm ${
+                        selectedCategories.includes(category)
+                          ? "bg-orange-400 border-orange-400 text-black font-poppinsBold"
+                          : "bg-gray-800 border-gray-700 text-white hover:border-gray-500"
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedCategories.includes(category)}
+                        onChange={() => toggleCategory(category)}
+                        className="sr-only"
+                      />
+                      {category}
+                    </label>
                   ))}
-                </select>
+                </div>
               </div>
               <div>
                 <label className="block text-sm text-gray-400 mb-1.5">
@@ -205,13 +228,13 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 flex-wrap">
               <button
                 type="submit"
-                disabled={uploading || !selectedFiles || selectedFiles.length === 0}
+                disabled={uploading || !selectedFiles || selectedFiles.length === 0 || selectedCategories.length === 0}
                 className="px-6 py-2.5 rounded-lg bg-orange-400 text-black font-poppinsBold text-sm uppercase tracking-wider hover:bg-orange-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
-                {uploading ? "Uploading..." : "Upload"}
+                {uploading ? "Uploading..." : `Upload to ${selectedCategories.length} categor${selectedCategories.length === 1 ? 'y' : 'ies'}`}
               </button>
 
               {selectedFiles && selectedFiles.length > 0 && (
@@ -327,7 +350,7 @@ export default function AdminPage() {
                   {/* Category label */}
                   <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent px-2 py-2">
                     <span className="text-xs text-gray-300">
-                      {photo.category}
+                      {photo.categories.join(", ")}
                     </span>
                   </div>
                 </div>

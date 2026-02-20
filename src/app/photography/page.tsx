@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { PhotoItem, Category } from "@/lib/types";
 import { CATEGORIES } from "@/lib/types";
 
-const GalleryPage: FC = (): ReactElement => {
+const PhotographyPage: FC = (): ReactElement => {
   const [selectedCategory, setSelectedCategory] = useState<Category>("All");
   const [photos, setPhotos] = useState<PhotoItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,14 +31,14 @@ const GalleryPage: FC = (): ReactElement => {
   const filteredImages =
     selectedCategory === "All"
       ? photos
-      : photos.filter((img) => img.category === selectedCategory);
+      : photos.filter((img) => img.categories.includes(selectedCategory));
 
   return (
     <div className="min-h-screen bg-black bg-[radial-gradient(#1b1d1d_3px,transparent_1px)] bg-size-[6px_6px]">
       {/* Header */}
       <div className="text-center py-12 px-4">
         <h1 className="text-4xl md:text-6xl font-glorify text-white uppercase tracking-wider">
-          Gallery
+          Photography
         </h1>
 
         {/* Category Links */}
@@ -106,4 +106,4 @@ const GalleryPage: FC = (): ReactElement => {
   );
 };
 
-export default GalleryPage;
+export default PhotographyPage;

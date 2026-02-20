@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "@/lib/auth";
 import type { Category } from "@/lib/types";
-import { categoryToSlug } from "@/lib/types";
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -15,11 +14,25 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const files = formData.getAll("files") as File[];
-    const category = (formData.get("category") as Category) || "Maternity";
+    const categoriesStr = formData.get("categories") as string;
 
     if (!files || files.length === 0) {
       return NextResponse.json(
         { error: "No files provided" },
+        { status: 400 }
+      );
+    }
+
+    let categories: Category[] = [];
+    try {
+      categories = JSON.parse(categoriesStr || "[]");
+    } catch {
+      categories = ["Maternity"]; // Default fallback
+    }
+
+    if (categories.length === 0) {
+      return NextResponse.json(
+        { error: "At least one category required" },
         { status: 400 }
       );
     }
@@ -37,9 +50,13 @@ export async function POST(request: NextRequest) {
         continue;
       }
 
-      const filename = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_").toLowerCase()}`;
-      const categorySlug = categoryToSlug(category);
-      const pathname = `photos/${categorySlug}/${filename}`;
+      const timestamp = Date.now();
+      const cleanFilename = file.name.replace(/[^a-zA-Z0-9.-]/g, "_").toLowerCase();
+      
+      // Encode categories in pathname: photos/{timestamp}_{categories}_{filename}
+      // Example: photos/1234567890_Maternity-Portraits_image.jpg
+      const categoriesSlug = categories.join("-");
+      const pathname = `photos/${timestamp}_${categoriesSlug}_${cleanFilename}`;
 
       const blob = await put(pathname, file, {
         access: "public",
@@ -49,7 +66,7 @@ export async function POST(request: NextRequest) {
       results.push({
         url: blob.url,
         pathname: blob.pathname,
-        category,
+        categories,
         alt: file.name.split(".")[0].replace(/-|_/g, " "),
         uploadedAt: new Date().toISOString(),
       });
