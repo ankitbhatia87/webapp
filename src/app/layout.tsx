@@ -45,7 +45,7 @@ export default function RootLayout({
         <AuthProvider>
           <div className="w-full grid">
             <Header />
-            <main id="pages" className="pt-10">{children}</main>
+            <main id="pages" className="pt-10 pb-20">{children}</main>
             <Footer />
           </div>
         </AuthProvider>

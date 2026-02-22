@@ -1,4 +1,5 @@
 export enum ButtonType {
   Primary = "primary",
-  Secondary = "secondary"
+  Secondary = "secondary",
+  IconButton = "icon-button",
 }

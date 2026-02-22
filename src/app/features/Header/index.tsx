@@ -89,13 +89,24 @@ const Header: FC = (): ReactElement => {
               <>
                 <ABWLink
                   to=""
-                  href="https://www.instagram.com/ankitbhatia.photography"
+                  href="https://www.instagram.com/ankitbhatiaphotography"
                   target="_blank"
                 >
                   <InstagramLogo
                     width={isScrolled ? 20 : 26}
                     height={isScrolled ? 20 : 26}
                     className="transition-all duration-300 text-white hover:text-pink-500"
+                  />
+                </ABWLink>
+                <ABWLink
+                  to=""
+                  href="https://www.instagram.com/storiesbyankitbhatia"
+                  target="_blank"
+                >
+                  <InstagramLogo
+                    width={isScrolled ? 20 : 26}
+                    height={isScrolled ? 20 : 26}
+                    className="transition-all duration-300 text-white hover:text-orange-500"
                   />
                 </ABWLink>
                 <ABWLink

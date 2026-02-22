@@ -96,3 +96,39 @@ export const AdobeStockLogo = ({ height = 25, width = 25 }: IconProps) => (
     </g>
   </svg>
 );
+
+export const CloseIcon = ({ height = 24, width = 24, className }: IconProps) => (
+  <svg
+    className={className}
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    height={height}
+    width={width}
+    strokeWidth={2}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M6 18L18 6M6 6l12 12"
+    />
+  </svg>
+);
+
+export const ChevronIcon = ({ height = 24, width = 24, className }: IconProps) => (
+  <svg
+    className={className}
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    height={height}
+    width={width}
+    strokeWidth={2}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M15 19l-7-7 7-7"
+    />
+  </svg>
+);

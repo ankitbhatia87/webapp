@@ -1,16 +1,19 @@
 "use client";
 
-import { FC, ReactElement, useState, useEffect } from "react";
+import { FC, ReactElement, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Button from "../components/Button/Button";
 import { motion, AnimatePresence } from "framer-motion";
 import type { PhotoItem, Category } from "@/lib/types";
 import { CATEGORIES } from "@/lib/types";
+import Lightbox from "../components/Lightbox";
 
 const PhotographyPage: FC = (): ReactElement => {
   const [selectedCategory, setSelectedCategory] = useState<Category>("All");
   const [photos, setPhotos] = useState<PhotoItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -32,6 +35,25 @@ const PhotographyPage: FC = (): ReactElement => {
     selectedCategory === "All"
       ? photos
       : photos.filter((img) => img.categories.includes(selectedCategory));
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => setLightboxOpen(false);
+
+  const goToNext = useCallback(() => {
+    setLightboxIndex((prev) =>
+      prev < filteredImages.length - 1 ? prev + 1 : 0
+    );
+  }, [filteredImages.length]);
+
+  const goToPrev = useCallback(() => {
+    setLightboxIndex((prev) =>
+      prev > 0 ? prev - 1 : filteredImages.length - 1
+    );
+  }, [filteredImages.length]);
 
   return (
     <div className="min-h-screen bg-black bg-[radial-gradient(#1b1d1d_3px,transparent_1px)] bg-size-[6px_6px]">
@@ -75,7 +97,7 @@ const PhotographyPage: FC = (): ReactElement => {
       ) : (
         <div className="gallery-grid px-4 pb-12 max-w-7xl mx-auto">
           <AnimatePresence mode="wait">
-            {filteredImages.map((image) => (
+            {filteredImages.map((image, index) => (
               <motion.div
                 key={image.url}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -86,6 +108,7 @@ const PhotographyPage: FC = (): ReactElement => {
                   ease: "easeOut",
                 }}
                 className="gallery-item group relative overflow-hidden rounded-lg cursor-pointer"
+                onClick={() => openLightbox(index)}
               >
                 <Image
                   src={image.url}
@@ -102,6 +125,16 @@ const PhotographyPage: FC = (): ReactElement => {
           </AnimatePresence>
         </div>
       )}
+
+      {/* Lightbox */}
+      <Lightbox
+        photos={filteredImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={closeLightbox}
+        onNext={goToNext}
+        onPrev={goToPrev}
+      />
     </div>
   );
 };
