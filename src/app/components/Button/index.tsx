@@ -31,6 +31,14 @@ const ABWButton: FC<ButtonTypeProp> = (props: ButtonTypeProp): ReactElement => {
           </span>
         </Button>
       )}
+      {type === ButtonType.Tertiary && (
+        <Button
+          className={`className="flex-1 px-3.5 py-2 rounded-lg bg-gray-800 text-gray-300 text-sm hover:bg-gray-700 transition-colors cursor-pointer" ${className}`}
+          {...rest}
+          >
+            {children}
+          </Button>
+      )}
       {type === ButtonType.IconButton && (
         <Button
           className={`absolute z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer ${className}`}

@@ -2,9 +2,10 @@ import { MouseEventHandler, ReactNode } from "react";
 import { ButtonType } from "./enum";
 
 export interface ButtonProps {
-  className: string;
+  className?: string;
   children: ReactNode;
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
 }
 
 export interface ButtonTypeProp extends ButtonProps {

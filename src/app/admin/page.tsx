@@ -6,6 +6,8 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import type { PhotoItem, Category } from "@/lib/types";
 import { CATEGORIES } from "@/lib/types";
+import ABWButton from "../components/Button";
+import { ButtonType } from "../components/Button/enum";
 
 const uploadCategories = CATEGORIES.filter((c) => c !== "All");
 
@@ -22,6 +24,11 @@ export default function AdminPage() {
   const [selectedForDelete, setSelectedForDelete] = useState<Set<string>>(new Set());
   const [uploadProgress, setUploadProgress] = useState("");
   const [filterCategory, setFilterCategory] = useState<Category>("All");
+
+  // Edit modal state
+  const [editingPhoto, setEditingPhoto] = useState<PhotoItem | null>(null);
+  const [editCategories, setEditCategories] = useState<Category[]>([]);
+  const [saving, setSaving] = useState(false);
 
   const fetchPhotos = useCallback(async () => {
     try {
@@ -149,6 +156,50 @@ export default function AdminPage() {
     filterCategory === "All"
       ? photos
       : photos.filter((p) => p.categories.includes(filterCategory));
+
+  const openEditModal = (photo: PhotoItem, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setEditingPhoto(photo);
+    setEditCategories([...photo.categories]);
+  };
+
+  const closeEditModal = () => {
+    setEditingPhoto(null);
+    setEditCategories([]);
+  };
+
+  const toggleEditCategory = (category: Category) => {
+    if (category === "All") return;
+    setEditCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    );
+  };
+
+  const handleSaveCategories = async () => {
+    if (!editingPhoto || editCategories.length === 0) return;
+    setSaving(true);
+    try {
+      const res = await fetch("/api/photos/update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: editingPhoto.url, categories: editCategories }),
+      });
+
+      if (res.ok) {
+        closeEditModal();
+        await fetchPhotos();
+      } else {
+        const data = await res.json();
+        alert(`Failed to update: ${data.error}`);
+      }
+    } catch {
+      alert("Failed to save categories. Please try again.");
+    } finally {
+      setSaving(false);
+    }
+  };
 
   if (status === "loading") {
     return (
@@ -347,6 +398,16 @@ export default function AdminPage() {
                       </svg>
                     )}
                   </div>
+                  {/* Edit button */}
+                  <button
+                    onClick={(e) => openEditModal(photo, e)}
+                    className="absolute top-2 left-2 w-6 h-6 rounded-full bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-orange-400 cursor-pointer"
+                    title="Edit categories"
+                  >
+                    <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z" />
+                    </svg>
+                  </button>
                   {/* Category label */}
                   <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent px-2 py-2">
                     <span className="text-xs text-gray-300">
@@ -359,6 +420,85 @@ export default function AdminPage() {
           )}
         </div>
       </div>
+
+      {/* Edit Categories Modal */}
+      {editingPhoto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4"
+          onClick={closeEditModal}
+        >
+          <div
+            className="bg-gray-900 border border-gray-700 rounded-xl p-6 w-full max-w-md"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-white font-poppinsBold text-lg">Edit Categories</h3>
+              <button
+                onClick={closeEditModal}
+                className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Preview */}
+            <div className="mb-4 rounded-lg overflow-hidden h-32 bg-gray-800">
+              <Image
+                src={editingPhoto.url}
+                alt={editingPhoto.alt}
+                width={400}
+                height={128}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Category checkboxes */}
+            <p className="text-sm text-gray-400 mb-3">Select categories (at least one):</p>
+            <div className="grid grid-cols-2 gap-2 mb-6">
+              {uploadCategories.map((category) => (
+                <label
+                  key={category}
+                  className={`p-2.5 rounded-lg cursor-pointer border-2 transition-all text-center text-sm ${
+                    editCategories.includes(category)
+                      ? "bg-orange-400 border-orange-400 text-black font-poppinsBold"
+                      : "bg-gray-800 border-gray-700 text-white hover:border-gray-500"
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={editCategories.includes(category)}
+                    onChange={() => toggleEditCategory(category)}
+                    className="sr-only"
+                  />
+                  {category}
+                </label>
+              ))}
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-3">
+              <ABWButton
+                type={ButtonType.Secondary}
+                onClick={handleSaveCategories}
+                disabled={saving || editCategories.length === 0}
+                className="px-3"
+              >
+                {saving ? "Saving..." : "Save"}
+              </ABWButton>
+              <ABWButton
+                type={ButtonType.Tertiary}
+                onClick={closeEditModal}
+                className="px-3"
+              >
+                Cancel
+              </ABWButton>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

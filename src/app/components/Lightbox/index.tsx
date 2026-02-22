@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useCallback } from "react";
+import { FC, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import type { PhotoItem } from "@/lib/types";
@@ -26,6 +26,8 @@ const Lightbox: FC<LightboxProps> = ({
   onPrev,
 }) => {
   const currentPhoto = photos[currentIndex];
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -44,6 +46,33 @@ const Lightbox: FC<LightboxProps> = ({
       }
     },
     [isOpen, onNext, onPrev, onClose]
+  );
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      if (touchStartX.current === null || touchStartY.current === null) return;
+
+      const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+      const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+
+      // Only trigger if horizontal swipe is dominant (not a scroll)
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+        if (deltaX < 0) {
+          onNext(); // swipe left → next
+        } else {
+          onPrev(); // swipe right → prev
+        }
+      }
+
+      touchStartX.current = null;
+      touchStartY.current = null;
+    },
+    [onNext, onPrev]
   );
 
   // Keyboard listener
@@ -76,6 +105,8 @@ const Lightbox: FC<LightboxProps> = ({
           transition={{ duration: 0.2 }}
           className="fixed inset-0 z-100 flex items-center justify-center bg-black/95"
           onClick={onClose}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Close Button */}
           <ABWButton
@@ -107,7 +138,7 @@ const Lightbox: FC<LightboxProps> = ({
               <ChevronIcon className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </ABWButton>
           )}
-b
+
           {/* Image */}
           <motion.div
             key={currentPhoto.url}
