@@ -1,0 +1,237 @@
+/* v2 Global Styles - Extracted from index-v3.html */
+
+@import "tailwindcss";
+
+:root {
+  --bg: #0A0B0E;
+  --bg-2: #0F1116;
+  --surface: #14161C;
+  --surface-2: #1B1E26;
+  --border: #242832;
+  --border-hi: #33384A;
+  --text: #F2F2F0;
+  --muted: #93949E;
+  --muted-2: #5E606C;
+  --gold: #14B8A6;
+  --gold-soft: rgba(20, 184, 166, 0.14);
+  --blue: #5B8CFF;
+  --green: #3DDC84;
+  --max: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--gold);
+  color: #100C02;
+}
+
+/* Typography Utilities */
+.mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Layout */
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Background Effects */
+.bg-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(650px circle at 20% 5%, rgba(20, 184, 166, 0.07), transparent 60%),
+    radial-gradient(550px circle at 80% 90%, rgba(91, 140, 255, 0.05), transparent 60%);
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Keyframe Animations */
+@keyframes panGrid {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 88px 44px, 88px 44px;
+  }
+}
+
+@keyframes drift1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(50px, 35px) scale(1.15);
+  }
+}
+
+@keyframes drift2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-40px, 45px) scale(1.12);
+  }
+}
+
+@keyframes drift3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.2);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floatA {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatB {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes floatC {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes pfloat1 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(8deg);
+  }
+}
+
+@keyframes pfloat2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(14px);
+  }
+}
+
+@keyframes pfloat3 {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.06);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .orb,
+  .lines,
+  .code-card,
+  .metric-card,
+  .arch-card,
+  .grad,
+  .pshape {
+    animation: none !important;
+  }
+}
+
+/* Reveal Animations */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+    filter: blur(6px);
+    transition: opacity 0.9s cubic-bezier(0.16, 0.8, 0.24, 1),
+      transform 0.9s cubic-bezier(0.16, 0.8, 0.24, 1),
+      filter 0.9s cubic-bezier(0.16, 0.8, 0.24, 1);
+  }
+
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+  .wrap {
+    padding: 0 20px;
+  }
+}
