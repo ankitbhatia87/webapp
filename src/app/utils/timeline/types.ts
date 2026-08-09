@@ -4,7 +4,7 @@ export interface TimelineRecord {
   description: string;
 }
 
-export interface TimelineData extends Array<TimelineRecord> {}
+export type TimelineData = TimelineRecord[];
 
 export interface TimelineProps {
   data: TimelineData;

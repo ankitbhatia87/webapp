@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from 'next/font/google';
+import { ThreeBackground } from './components/ThreeBackground';
 import './globals-v2.css';
 
 const spaceGrotesk = Space_Grotesk({
@@ -45,18 +46,15 @@ export default function V2Layout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
-      <body>
-        {/* Background Effects */}
-        <div className="bg-glow" />
-        <div className="grain" />
-        
-        {children}
-      </body>
-    </html>
+    <div className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable} min-h-screen`}>
+      {/* Fixed Three.js Constellation Background */}
+      <ThreeBackground />
+      
+      {/* Background Effects */}
+      <div className="bg-glow" />
+      <div className="grain" />
+      
+      {children}
+    </div>
   );
 }

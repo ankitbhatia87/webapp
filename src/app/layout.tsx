@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./features/Header";
-import Footer from "./features/Footer";
 import AuthProvider from "./components/AuthProvider";
+import V1Chrome from "./components/V1Chrome";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,11 +42,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <div className="w-full grid">
-            <Header />
-            <main id="pages" className="pt-10 pb-20">{children}</main>
-            <Footer />
-          </div>
+          <V1Chrome>{children}</V1Chrome>
         </AuthProvider>
       </body>
     </html>

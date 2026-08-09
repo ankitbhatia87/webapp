@@ -95,7 +95,7 @@ const PhotographyPage: FC = (): ReactElement => {
           No photos found in this category.
         </div>
       ) : (
-        <div className="gallery-grid px-4 pb-12 max-w-7xl mx-auto">
+        <div className="gallery-grid px-4 pb-18 max-w-7xl mx-auto">
           <AnimatePresence mode="wait">
             {filteredImages.map((image, index) => (
               <motion.div
