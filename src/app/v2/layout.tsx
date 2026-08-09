@@ -32,11 +32,20 @@ export const metadata: Metadata = {
     siteName: 'Ankit Bhatia',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: 'https://ankitbhatia.com/assets/v2/brand/logo-mark.png',
+        width: 512,
+        height: 512,
+        alt: 'Ankit Bhatia Logo',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ankit Bhatia — Staff Frontend Engineer',
     description: 'Staff Frontend Engineer specializing in scalable web applications.',
+    images: ['https://ankitbhatia.com/assets/v2/brand/logo-mark.png'],
   },
 };
 
