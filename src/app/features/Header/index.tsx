@@ -11,6 +11,7 @@ import ABWLink from "@/app/components/Link";
 const Header: FC = (): ReactElement => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [resumeUrl, setResumeUrl] = useState("/pdf/resume.pdf");
   const pathname = usePathname();
   const isGallery = pathname === "/photography";
 
@@ -23,8 +24,19 @@ const Header: FC = (): ReactElement => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    fetch("/api/resume")
+      .then((response) => response.json())
+      .then((data: { url?: string }) => {
+        if (data.url) setResumeUrl(data.url);
+      })
+      .catch(() => {
+        // Keep the local PDF fallback when Blob is unavailable.
+      });
+  }, []);
+
   const handleCVDownloadBtnClick = () => {
-    window.open("/pdf/resume.pdf", "_blank");
+    window.open(resumeUrl, "_blank", "noopener,noreferrer");
   };
 
   return (

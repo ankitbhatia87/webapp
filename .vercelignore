@@ -1,0 +1,13 @@
+.git
+.gitignore
+README.md
+V2_SETUP.md
+.env.example
+.eslintignore
+.prettierignore
+node_modules
+.next
+coverage
+*.test.ts
+*.test.tsx
+.DS_Store
