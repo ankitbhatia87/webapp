@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from 'next/font/google';
+import { head } from '@vercel/blob';
 import { ThreeBackground } from './components/ThreeBackground';
 import './globals-v2.css';
 
@@ -22,7 +23,20 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
+const FALLBACK_IMAGE = 'https://ankitbhatia.com/assets/v2/brand/logo-mark.png';
+
+export async function generateMetadata(): Promise<Metadata> {
+  let imageUrl = FALLBACK_IMAGE;
+
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    try {
+      imageUrl = (await head('assets/v2/brand/logo-mark.png')).url;
+    } catch {
+      // Keep the absolute URL fallback when Blob is unavailable.
+    }
+  }
+
+  return {
   title: 'Ankit Bhatia — Staff Frontend Engineer',
   description: 'Staff Frontend Engineer specializing in scalable web applications, performance optimization, and team leadership.',
   openGraph: {
@@ -34,7 +48,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://ankitbhatia.com/assets/v2/brand/logo-mark.png',
+        url: imageUrl,
         width: 512,
         height: 512,
         alt: 'Ankit Bhatia Logo',
@@ -45,9 +59,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Ankit Bhatia — Staff Frontend Engineer',
     description: 'Staff Frontend Engineer specializing in scalable web applications.',
-    images: ['https://ankitbhatia.com/assets/v2/brand/logo-mark.png'],
+    images: [imageUrl],
   },
-};
+  };
+}
 
 export default function V2Layout({
   children,
